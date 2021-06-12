@@ -1,8 +1,10 @@
+`use strict`
 const Koa = require('koa');
 const koaBody = require('koa-body');
 const koaRouter = require('koa-router');
 const koaLogger = require('koa-logger');
 const router1 = require('./routes/1');
+const router2 = require('./api');
 const app = new Koa();
 // app.use(async ctx => {
 //     ctx.body = 'test';
@@ -12,6 +14,7 @@ const app = new Koa();
 app.use(koaBody());
 app.use(koaLogger());
 app.use(router1.routes()).use(cors()).use(router1.allowedMethods());
+app.use('/api', router2.routes()).use(router2.allowedMethods());
   // cors() : open all domain, case of test
 
 // const defaultRouter = new koaRouter({ routerPath: '/' });

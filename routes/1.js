@@ -112,7 +112,7 @@ router1.put('/update', (ctx, next) => {
 router1.patch('/update/:id', ctx => {
     const id = ctx.request.params;
     const title = ctx.request.body;
-    const res = testREs.map(x => {
+    const res = testRes.map(x => {
         x.id == id ? x.title = title : x.title;
         return {
             id: x.id,
