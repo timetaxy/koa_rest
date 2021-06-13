@@ -2,6 +2,7 @@ const Koa = require('koa');
 const koaBody = require('koa-body');
 const koaRouter = require('koa-router');
 const koaLogger = require('koa-logger');
+const router1 = require('./routes/1');
 const app = new Koa();
 // app.use(async ctx => {
 //     ctx.body = 'test';
@@ -10,8 +11,9 @@ const app = new Koa();
 
 app.use(koaBody());
 app.use(koaLogger());
-const router1 = require('./routes/1');
-app.use(router1.routes());
+app.use(router1.routes()).use(cors()).use(router1.allowedMethods());
+  // cors() : open all domain, case of test
+
 // const defaultRouter = new koaRouter({ routerPath: '/' });
 // defaultRouter.all('/', ctx => {
 //     ctx.redirect('/1');
