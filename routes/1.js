@@ -17,4 +17,49 @@ router1.get('/', (ctx, next) => {
     next();
 });
 
+router1.post('/insert', (ctx, next) => {
+    if (!ctx.request.body.title) {
+        //todo : use props, validation for all api
+        ctx.response.status = 400;
+        ctx.body = 'invalid request';
+    } else {
+        const latestId = testRes[testRes.length - 1].id;
+        console.log(`latest objectId: ${latestId}`);
+        let newVal = {
+            id: latestId + 1,
+            title: ctx.request.body.title
+        };
+        testRes.push(newVal);
+        ctx.response.status = 201;
+        ctx.body = {
+            status: 'success',
+            message: `newly inserted, id:${newVal.id}`
+        };
+    }
+    next();
+});
+
+router1.get('/:id', (ctx, next) => {
+    // let filteredVal = null;
+    let filteredVal = testRes.filter(x => {
+        console.log(typeof (x.id));
+        console.log(x.id);
+        console.log(typeof (ctx.params.id));
+        console.log(ctx.params.id);
+        return x.id === parseInt(ctx.params.id);
+    });
+    if (filteredVal[0] && filteredVal[0].title) {
+        // if (filteredVal != null) {
+        ctx.body = `selected value:${filteredVal[0].title}`;
+    } else {
+        ctx.response.status = 404;
+        ctx.body = {
+            status: `error`,
+            message: `proper value not found, id:${ctx.params.id}`
+        };
+    }
+    next();
+});
+
+
 module.exports = router1;
