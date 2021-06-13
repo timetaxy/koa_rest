@@ -10,6 +10,17 @@ const router1 = new koaRouter({
     prefix: '/1'
 });
 router1.get('/', (ctx, next) => {
+    const qryStr = ctx.query.title;
+    ctx.body = {
+        status: 'success',
+        title: testRes,
+        yourClient: qryStr
+    };
+    // next();
+    //without next : if same api spec, it will excute bottom api
+});
+
+router1.get('/', (ctx, next) => {
     ctx.body = {
         status: 'success',
         value: testRes
@@ -39,6 +50,7 @@ router1.post('/insert', (ctx, next) => {
     next();
 });
 
+// dynamic data also available (result of pushed value)
 router1.get('/:id', (ctx, next) => {
     // let filteredVal = null;
     let filteredVal = testRes.filter(x => {
@@ -60,6 +72,7 @@ router1.get('/:id', (ctx, next) => {
     }
     next();
 });
+
 
 
 module.exports = router1;
