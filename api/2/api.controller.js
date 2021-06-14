@@ -1,15 +1,16 @@
-exports.list = (ctx) => {
+exports.list = ctx => {
   ctx.body = 'listed';
+  //localhost:4000/api/2
 };
-exports.create = (ctx) => {
+exports.create = ctx => {
   ctx.body = 'created';
 };
-exports.delete = (ctx) => {
-  ctx.body = 'deleted'
+exports.delete = ctx => {
+  ctx.body = 'deleted';
 };
-exports.replace = (ctx) => {
+exports.replace = ctx => {
   ctx.body = 'replaced';
 };
-exports.update = (ctx) => {
+exports.update = ctx => {
   ctx.body = 'updated';
 };

@@ -1,7 +1,7 @@
 <!-- commandPallete : Command + Shift + P -->
 <!-- setting : Control + ,  -->
 
-npm i koa koa-body koa-router koa-logger
+npm i koa koa-body koa-router koa-logger koa-bodyparser --s
 npm i nodemon --save-dev
 npm run dev
 
@@ -13,9 +13,17 @@ PUT, PATCH on the endpoint /users/:userId (update the data for a specific user)
 DELETE on the endpoint /users/:userId (remove a specific user)
 
 ROUTING >>>>>>>>>>>>>>
+
+- 경로지정은 router.use 에
+- router.use 에는 경로와 router.routes() / router.get 에는 실행 ctrl 명시
+- router.use('/dir', importedRouter.routes()) < exports = router.use('/subDir', imported2Router.routes()) < router.get('/',ctrl.list);
+
 // index.js
+const Router = require('koa-router');
+const router = new Router();
 const router2 = require('./api');
-app.use('/api', router2.routes()).use(router2.allowedMethods());
+router.use('/api', router2.routes());
+app.use(router.routes()).use(router.allowedMethods());
 
 // api/index.js
 const Router = require('koa-router');
@@ -35,6 +43,9 @@ module.exports = route2;
 exports.list = (ctx) => {
 ctx.body = 'listed';
 };
+//localhost:4000/api/2
+
+//////////////////
 
 brew update
 $ brew install mongodb
