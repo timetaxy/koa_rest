@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=src node src",
-    "start:dev": "NODE_PATH=src nodemon --watch src/ src/index.js"
+    "start": "NODE_PATH=. node .",
+    "start:dev": "NODE_PATH=. nodemon --watch index.js"
   },
   "keywords": [],
   "author": "",
