@@ -11,17 +11,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint": "^8.9.0",
+    "dotenv": "^16.0.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-logger": "^3.2.1",
-    "koa-router": "^10.1.1"
+    "koa-router": "^10.1.1",
+    "mongoose": "^6.2.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1"
   }
 }
