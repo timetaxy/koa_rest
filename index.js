@@ -11,7 +11,7 @@ const router2 = require('./api');
 const bodyParser = require('koa-bodyParser');
 const PORT = process.env.PORT || 4000;
 const app = new Koa();
-
+console.log(`NODE_PATH:${process.env.NODE_PATH}`);
 // app.use(bodyParser()); //json data parser for db process
 // app.use(async ctx => {
 //   // 아무것도 없으면 {} 가 반환됩니다.

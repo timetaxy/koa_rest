@@ -62,7 +62,7 @@ exports.delete = async ctx => {
     });
   ctx.status = 204;
 };
-exports.replace = ctx => {
+exports.replace = async ctx => {
   // ctx.body = 'replaced';
   const { id } = ctx.params;
   if (ObjectId.isValid(id)) {
@@ -97,7 +97,7 @@ exports.replace = ctx => {
   });
   ctx.body = res;
 };
-exports.update = ctx => {
+exports.update = async ctx => {
   // ctx.body = 'updated';
   const { id } = ctx.params;
   if (!ObjectId.isValid(id)) {

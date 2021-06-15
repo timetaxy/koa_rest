@@ -6,6 +6,14 @@ npm i nodemon --save-dev
 
 node path 지정 package, .jsconfig.json(for ide 자동완성) 파일
 
+\*dot env 환경변수를 문서화
+환경변수 실행 ex) NODE_PATH=./ node .
+
+1. router
+2. router ctrl 분리
+3. mongo crud > ex1
+4. mongo crud, hashing, static function > account
+
 //nodemon issue
 npm uninstall nodemon
 sudo npm install nodemon -g
@@ -106,6 +114,13 @@ mongodb remove
 .findOneAndRemove: 특정 조건을 만족하는 데이터 하나
 
 put 전체수정 / patch 하나만 수정
+
+HMAC SHA256 의 경우엔 데이터를 주어진 비밀키(secret) 와 함께 해싱을 하고, 해싱된 결과물을 비밀키와 함께 다시한번 해싱
+
+모델 메소드는 두 종류로 만들 수 가 있습니다. .statics 와 .methods 인데요, 각 종류는 서로 가르키는 this 값이 다른데요, 전자의 경우엔 모델 자체를 가르키고, 후자의 경우엔 데이터 인스턴스를 가르킴
+
+도메인 필터링 가능
+authRouter.get('/exists/:k(id|email)/:v', authCtrl.exists);
 
 Rererenced, thanks to
 //https://www.tutorialspoint.com/koajs/koajs_quick_guide.htm
