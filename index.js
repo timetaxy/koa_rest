@@ -4,7 +4,7 @@ require('dotenv').config();
 const Koa = require('koa');
 const koaBody = require('koa-body');
 const Router = require('koa-router');
-const router = new Router();
+const router22 = new Router();
 const koaLogger = require('koa-logger');
 const router1 = require('./routes/1');
 const router2 = require('./api');
@@ -12,6 +12,11 @@ const bodyParser = require('koa-bodyParser');
 const PORT = process.env.PORT || 4000;
 const app = new Koa();
 
+// app.use(bodyParser()); //json data parser for db process
+// app.use(async ctx => {
+//   // 아무것도 없으면 {} 가 반환됩니다.
+//   ctx.body = ctx.request.body;
+// });
 //////mongo
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -28,7 +33,7 @@ mongoose
   .catch(e => {
     console.error(e);
   });
-app.use(bodyParser()); //json data parser for db process
+
 ///////////////
 
 // app.use(async ctx => {
@@ -36,13 +41,22 @@ app.use(bodyParser()); //json data parser for db process
 // });
 // ctx: object of req, res
 
-app.use(koaBody());
+app.use(
+  bodyParser({
+    formidable: { uploadDir: './uploads' },
+    multipart: true,
+    urlencoded: true,
+  }),
+);
 app.use(koaLogger());
+// app.use(koaBody()); //json data parser for db process
 app.use(router1.routes()).use(router1.allowedMethods());
 // app.use(router1.routes()).use(cors()).use(router1.allowedMethods());
 // cors() : open all domain, case of test
-router.use('/api', router2.routes());
-app.use(router.routes()).use(router.allowedMethods());
+// app.use(bodyParser()); //json data parser for db process
+
+router22.use('/api', router2.routes());
+app.use(router22.routes()).use(router22.allowedMethods());
 
 // const defaultRouter = new koaRouter({ routerPath: '/' });
 // defaultRouter.all('/', ctx => {

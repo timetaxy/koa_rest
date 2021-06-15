@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=. node .",
-    "start:dev": "NODE_PATH=. nodemon --watch index.js"
+    "start": "NODE_PATH=./ node .",
+    "dev": "NODE_PATH=./ nodemon ./index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
+    "joi": "^17.6.0",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-bodyparser": "^4.3.0",
@@ -29,7 +30,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
-    "nodemon": "^2.0.15",
     "prettier": "2.5.1"
   }
 }

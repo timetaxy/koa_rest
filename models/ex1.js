@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Inner = new Schema({
-  name: String,
-  val: Number,
+  name11: String,
+  val11: Number,
 });
 const Obj = new Schema({
-  name: String,
-  inner: [Inner],
-  date: Date,
-  number: Number,
-  arr: [String],
-  defaultExample: { type: Date, default: Date.now },
+  name1: String,
+  inner1: [Inner],
+  date1: Date,
+  number1: Number,
+  arr1: [String],
+  defaultExample1: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('ex1', Obj); //args1 name of schema, args2 obj of schema
