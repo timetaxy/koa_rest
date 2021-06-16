@@ -39,12 +39,22 @@ koa-body now support koa version 2. The main difference now remains about file p
 // ctx.request undefined issue
 Content-Length 헤더 필수
 
+////////rest
+
 ref : https://www.toptal.com/nodejs/secure-rest-api-in-nodejs
 POST on the endpoint /users (create a new user)
 GET on the endpoint /users (list all users)
 GET on the endpoint /users/:userId (get a specific user)
 PUT, PATCH on the endpoint /users/:userId (update the data for a specific user)
 DELETE on the endpoint /users/:userId (remove a specific user)
+
+- way of transfer data
+- ctx.request.query.foo => GET, PATCH, DELETE
+- ?query
+- ctx.request.body.foo => POST, PUT
+- body
+- ctx.params.foo => GET, PATCH, DELETE
+- path
 
 ROUTING >>>>>>>>>>>>>>
 
@@ -121,6 +131,14 @@ HMAC SHA256 의 경우엔 데이터를 주어진 비밀키(secret) 와 함께 �
 
 도메인 필터링 가능
 authRouter.get('/exists/:k(id|email)/:v', authCtrl.exists);
+
+mongoos DTO 내 this 는 arrow ex 아니고 function으로 구현할 것
+
+static 은 객체타입에서, methods는 구현체에서 콜 가능
+Account.statics.findById
+Account.findById(ctx.request.body).catch ...
+Account.methods.validatePw = pw => {
+account.validatePw(pw)
 
 Rererenced, thanks to
 //https://www.tutorialspoint.com/koajs/koajs_quick_guide.htm

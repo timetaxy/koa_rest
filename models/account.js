@@ -19,12 +19,17 @@ const Account = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-Account.statics.findById = id => {
+Account.statics.findById = function (id) {
+  // Account.statics.findById = id => {
   return this.findOne({ id: id }).exec();
 };
 
+Account.statics.findByEmail = function (email) {
+  return this.findOne({ info: { email: email } }).exec();
+};
+
 Account.statics.register = function ({ id, email, pw }) {
-  // Account.statics.register = ({ id, email, pw }) => {
+  // Account.statics.register = ({ id, email, pw }) => { //it's not working, false this target
   const account = new this({
     id: id,
     info: { email },
@@ -33,7 +38,8 @@ Account.statics.register = function ({ id, email, pw }) {
   return account.save();
 };
 
-Account.methods.validatePw = pw => {
+Account.methods.validatePw = function (pw) {
+  // Account.methods.validatePw = pw => {
   const hashed = hash(pw);
   return this.pw === hashed;
 };
