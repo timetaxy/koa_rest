@@ -1,7 +1,7 @@
 <!-- commandPallete : Command + Shift + P -->
 <!-- setting : Control + ,  -->
 
-npm i koa koa-body koa-router koa-logger koa-bodyparser --s
+npm i koa koa-body koa-router koa-logger koa-bodyparser joi jsonwebtoken --s
 npm i nodemon --save-dev
 
 node path 지정 package, .jsconfig.json(for ide 자동완성) 파일
