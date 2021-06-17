@@ -51,7 +51,7 @@ app.use(
   }),
 );
 app.use(koaLogger());
-app.use(jwtMid);
+app.use(jwtMidware);
 // app.use(koaBody()); //json data parser for db process
 app.use(router1.routes()).use(router1.allowedMethods());
 // app.use(router1.routes()).use(cors()).use(router1.allowedMethods());

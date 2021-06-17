@@ -54,7 +54,7 @@ exports.logIn = async ctx => {
     return;
   }
   const tkn = await account.genTkn().catch(e => ctx.throw(500, e));
-  ctx.cookies.set('access_token', token, {
+  ctx.cookies.set('access_token', tkn, {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   });
@@ -80,4 +80,13 @@ exports.logout = async ctx => {
   // ctx.body = 'logout';
   ctx.cookies.set('access_token', null, { maxAge: 0, httpOnly: true });
   ctx.status = 204;
+};
+
+exports.verify = ctx => {
+  const { user } = ctx.request;
+  if (!user) {
+    ctx.status = 403;
+    return;
+  }
+  ctx.body = user.info.email;
 };

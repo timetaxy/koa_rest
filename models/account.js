@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { genTkn } = require('lib/toknes');
+const { genTkn } = require('lib/token');
 const crypto = require('crypto');
 const { Schema } = mongoose;
 /**
