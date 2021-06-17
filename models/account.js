@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { genTkn } = require('lib/toknes');
 const crypto = require('crypto');
 const { Schema } = mongoose;
 /**
@@ -42,6 +43,14 @@ Account.methods.validatePw = function (pw) {
   // Account.methods.validatePw = pw => {
   const hashed = hash(pw);
   return this.pw === hashed;
+};
+
+Account.methods.genTkn = function () {
+  const payload = {
+    _id: this._id,
+    email: this.info.email,
+  };
+  return genTkn(payload, 'account');
 };
 
 module.exports = mongoose.model('Account', Account);

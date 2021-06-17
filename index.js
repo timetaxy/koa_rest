@@ -68,16 +68,17 @@ app.listen(PORT, () => {
 });
 // app.listen(4000);
 
-const jwt = require('jsonwebtoken');
-const token = jwt.sign(
-  { foo: 'bar' },
-  'secret-key',
-  { expiresIn: '1d' },
-  (err, token) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log(token);
-  },
-);
+//jwt test
+// const jwt = require('jsonwebtoken');
+// const token = jwt.sign(
+//   { foo: 'bar' },
+//   'secret-key',
+//   { expiresIn: '1d' },
+//   (err, token) => {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     }
+//     console.log(token);
+//   },
+// );
