@@ -29,10 +29,16 @@ exports.register = async ctx => {
     };
     return;
   }
-  const res = await Account.register(ctx.request.body).catch(e =>
+  const account = await Account.register(ctx.request.body).catch(e =>
     ctx.throw(500, e),
   );
-  ctx.body = JSON.stringify(res);
+
+  const tkn = await account.genTkn().catch(e => ctx.throw(500, e));
+  ctx.cookies.set('access_token', token, {
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  });
+  ctx.body = JSON.stringify(account);
 };
 exports.logIn = async ctx => {
   // ctx.body = 'login';
@@ -47,6 +53,11 @@ exports.logIn = async ctx => {
     ctx.status = 403;
     return;
   }
+  const tkn = await account.genTkn().catch(e => ctx.throw(500, e));
+  ctx.cookies.set('access_token', token, {
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  });
   ctx.body = JSON.stringify(account);
 };
 exports.exists = async ctx => {
@@ -66,5 +77,7 @@ exports.exists = async ctx => {
   }
 };
 exports.logout = async ctx => {
-  ctx.body = 'logout';
+  // ctx.body = 'logout';
+  ctx.cookies.set('access_token', null, { maxAge: 0, httpOnly: true });
+  ctx.status = 204;
 };

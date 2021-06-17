@@ -11,7 +11,9 @@ const router2 = require('./api');
 const bodyParser = require('koa-bodyParser');
 const PORT = process.env.PORT || 4000;
 const app = new Koa();
+const { jwtMidware } = require('lib/token');
 console.log(`NODE_PATH:${process.env.NODE_PATH}`);
+
 // app.use(bodyParser()); //json data parser for db process
 // app.use(async ctx => {
 //   // 아무것도 없으면 {} 가 반환됩니다.
@@ -49,6 +51,7 @@ app.use(
   }),
 );
 app.use(koaLogger());
+app.use(jwtMid);
 // app.use(koaBody()); //json data parser for db process
 app.use(router1.routes()).use(router1.allowedMethods());
 // app.use(router1.routes()).use(cors()).use(router1.allowedMethods());
