@@ -88,5 +88,5 @@ exports.verify = ctx => {
     ctx.status = 403;
     return;
   }
-  ctx.body = user.info.email;
+  ctx.body = JSON.stringify(user);
 };
